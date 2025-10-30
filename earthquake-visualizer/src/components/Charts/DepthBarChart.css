@@ -1,0 +1,4 @@
+/* reuse same styles as pie chart for consistency */
+.chart-card-inner { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; padding:10px 12px; box-sizing:border-box; color:#0f4b93 }
+.chart-header { font-weight:700; margin-bottom:8px; color:#e6eef8 }
+.chart-card-empty { height:260px; display:flex; align-items:center; justify-content:center; color:#9fb0d7; background:transparent; border-radius:8px; }

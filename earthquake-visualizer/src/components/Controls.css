@@ -1,0 +1,10 @@
+.controls-root { display:flex; flex-direction:column; gap:12px }
+.controls-row { display:flex; flex-direction:column }
+.label { font-size:0.9rem; color: #cbd5e1; margin-bottom:6px }
+.mag-row { display:flex; gap:8px; align-items:center }
+.mag-row input[type=range] { flex:1 }
+.mag-value { width:46px; text-align:center }
+.text { padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit }
+.actions { display:flex; justify-content:flex-end }
+.refresh { background:#2563eb; color:white; border:none; padding:8px 12px; border-radius:8px; cursor:pointer }
+.refresh:hover{ filter:brightness(.95) }

@@ -1,0 +1,233 @@
+:root{
+  --bg: #071633;
+  --panel: rgba(255,255,255,0.03);
+  --muted: #9fb0d7;
+  --card-border: rgba(255,255,255,0.05);
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%;margin:0}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,#07102a,#071733);
+  color: #e6eef8;
+}
+
+/* global layout */
+.app-container { max-width:1200px; margin:20px auto; padding:16px; }
+.header { display:flex; align-items:center; gap:12px; }
+.title { font-size:1.5rem; font-weight:700; }
+.subtitle { color: var(--muted); font-size:0.95rem }
+
+/* two-column content */
+.content {
+  display:grid;
+  grid-template-columns: 360px 1fr;
+  gap:16px;
+  margin-top:16px;
+}
+
+/* panel simple style (used by many components) */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--card-border);
+  padding:12px;
+  border-radius:10px;
+}
+
+/* map container wrapper ensures bounded map */
+.map-area {
+  height: 72vh;
+  min-height: 420px;
+  max-height: 920px;
+  border-radius:10px;
+  overflow:hidden;
+  border: 1px solid var(--card-border);
+}
+
+/* responsive */
+@media (max-width: 880px) {
+  .content { grid-template-columns: 1fr; }
+  .map-area { height: 56vh; min-height: 360px; }
+}
+
+/* small text */
+.small-muted { color: var(--muted); font-size: 0.95rem; }
+
+/* add to src/index.css (replace previous .content/.map-area if needed) */
+
+/* layout */
+.content {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 16px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+/* left sidebar sticky and non-scrollable */
+.sidebar-sticky {
+  position: sticky;
+  top: 20px;              /* stays visible while user scrolls main content */
+  height: calc(100vh - 40px);
+  overflow: hidden;       /* no internal scroll */
+}
+
+/* map wrapper: smaller height so visualizations are visible below */
+.map-area {
+  height: 58vh;           /* reduced height so charts under the map are visible without too much scrolling */
+  min-height: 420px;
+  max-height: 760px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* when screen narrow stack columns */
+@media (max-width: 880px) {
+  .content { grid-template-columns: 1fr; }
+  .sidebar-sticky { position: static; height: auto; overflow: visible; }
+  .map-area { height: 52vh; min-height: 360px; }
+}
+
+/* small helper */
+.small-muted { color: #9fb0d7; font-size: 0.95rem; }
+
+/* stable chart card containers used in Home.jsx */
+.charts-row { display:flex; gap:16px; flex-wrap:wrap; }
+.charts-row > div { box-sizing: border-box; }
+
+/* map area */
+.map-area { width:100%; min-height:420px; height:46vh; border-radius:12px; overflow:hidden; }
+
+/* small utilities */
+.panel { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; padding:14px; box-sizing:border-box; }
+.small-muted { color:#9fb0d7; }
+.refresh { background:#2b6df6; color:white; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
+
+/* ensure timeline & chart containers fill their parents */
+.chart-card-inner, .chart-card-empty {
+  width:100%; height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; color:#9fb0d7;
+}
+
+/* keep sidebar sticky */
+.sidebar-sticky {
+  height: calc(100vh - 88px);
+  position: sticky;
+  top: 88px;
+  overflow: hidden;
+}
+
+/* responsive tweaks */
+@media (max-width: 1100px) {
+  .charts-row { gap: 12px; }
+}
+@media (max-width: 720px) {
+  .charts-row { flex-direction: column; }
+}
+/* ---------- layout fundamentals ---------- */
+
+/* ensure the content row uses flex and children can shrink */
+.content {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+/* sidebar: fixed width on desktop, sticky and non-scrollable */
+.sidebar-sticky {
+  flex: 0 0 300px;      /* fixed width */
+  min-width: 260px;
+  height: calc(100vh - 88px);
+  position: sticky;
+  top: 88px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* main content next to sidebar must be allowed to shrink to avoid overflow */
+.content > main,
+.content-main {
+  flex: 1 1 auto;
+  min-width: 0;         /* critical: allow children (charts) to shrink inside flexbox */
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+/* prevent child charts from growing beyond parent's width (important for mobile) */
+.panel, .map-area, .chart-card-inner {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Chart containers: Recharts needs a measured height — maintain that */
+.map-area { min-height: 320px; height: 46vh; }
+.charts-row > div { box-sizing: border-box; }
+
+/* Mobile: hide sidebar to free space, show a small toggle if you want later */
+@media (max-width: 900px) {
+  .sidebar-sticky {
+    display: none; /* hide sidebar on narrow screens */
+  }
+  .content { padding: 12px; }
+  /* if you want a small top toggle later, add it in header and show here */
+}
+
+/* Avoid large right-side whitespace: ensure body/html take full width */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* fix for overlapping elements (z-index, stacking) */
+.header { z-index: 50; position: relative; }
+.sidebar-sticky { z-index: 30; }
+
+/* For charts: cap max-width so they don't overflow */
+.charts-row { gap: 16px; display:flex; flex-wrap:wrap; }
+.charts-row > div { max-width: 100%; flex: 1 1 320px; }
+
+/* ensure scrollbars appear only on main area, not on whole page */
+.content > main { overflow-y: auto; max-height: calc(100vh - 88px); }
+
+/* small utility */
+.refresh { cursor: pointer; }
+
+/* allow the main area to shrink and avoid overlap */
+.content > main { flex: 1 1 auto; min-width: 0; box-sizing: border-box; overflow-y: auto; max-height: calc(100vh - 88px); }
+
+/* make sidebar scrollable (sticky but inner content scrolls) */
+.sidebar-sticky {
+  flex: 0 0 300px;
+  min-width: 260px;
+  height: calc(100vh - 88px);
+  position: sticky;
+  top: 88px;
+  overflow-y: auto;   /* <-- allow vertical scrolling inside sidebar */
+  padding-right: 8px;
+  box-sizing: border-box;
+}
+
+/* ensure chart parent sizes are stable for Recharts */
+.charts-row > div { box-sizing: border-box; min-width: 320px; height: 320px; }
+.map-area { min-height: 320px; height: 46vh; }
+
+/* remove weird overflow gaps on mobile - hide sidebar under 900px */
+@media (max-width: 900px) {
+  .sidebar-sticky { display: none; } /* you can implement a toggle later */
+  .charts-row > div { min-width: 100%; height: 280px; }
+  .map-area { height: 36vh; }
+}
+
+/* colors: ensure legend/pie mapping uses same palette - helper classes */
+.legend-swatch { width: 14px; height: 10px; display:inline-block; border-radius:3px; vertical-align:middle; margin-right:8px; }
+.color-mag-1 { background: #F28E2B; } /* 1-2 */
+.color-mag-2 { background: #E15759; } /* 2-3 */
+.color-mag-3 { background: #76B7B2; } /* 3-4 */
+.color-mag-4 { background: #59A14F; } /* 4-5 */
+.color-mag-5 { background: #EDC948; } /* 5+ */
+.color-mag-0 { background: #4E79A7; } /* <1 */

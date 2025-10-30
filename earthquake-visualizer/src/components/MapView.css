@@ -1,0 +1,2 @@
+/* bounded map wrapper handled by parent .map-area; ensure leaflet fills */
+.leaflet-container { width:100% !important; height:100% !important; }

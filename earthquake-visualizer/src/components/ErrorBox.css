@@ -1,0 +1,5 @@
+.error-root { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:12px; background: linear-gradient(90deg,#3b1f2b,#271b31); border-radius:8px; color:#ffd6d6 }
+.err-title { font-weight:700 }
+.err-message { font-size:0.95rem; color:#ffd6d6; opacity:0.95 }
+.err-btn { background:#ef4444; color:white; padding:8px 12px; border-radius:8px; border:none; cursor:pointer }
+.err-btn:hover{ filter:brightness(.95) }

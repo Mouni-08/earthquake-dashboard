@@ -1,0 +1,8 @@
+.chart-card {
+  background: #111827;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  color: #e5e7eb;
+  text-align: center;
+}

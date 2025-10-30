@@ -1,0 +1,3 @@
+.legend-title { font-weight:700; margin-bottom:8px; color: #e6eef8 }
+.legend-items { display:flex; flex-direction:column; gap:6px; color:#cfe0ff; font-size:0.92rem }
+.swatch { display:inline-block; width:18px; height:12px; margin-right:8px; vertical-align:middle; border-radius:3px; border:1px solid rgba(0,0,0,0.15) }
