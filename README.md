@@ -28,28 +28,3 @@ This dashboard provides a visual summary of earthquake events based on magnitude
 | Icons | Lucide React |
 | Deployment | GitHub Pages / CodeSandbox / StackBlitz |
 
----
-
-## 📂 Project Structure
-
-earthquake-dashboard/
-├── src/
-│ ├── components/
-│ │ ├── charts/
-│ │ │ ├── DepthBarChart.jsx
-│ │ │ ├── RegionBarChart.jsx
-│ │ │ ├── MagnitudePieChart.jsx
-│ │ │ ├── TimelineChart.jsx
-│ │ │ └── EventOverTimeChart.jsx
-│ │ ├── MapView.jsx
-│ │ ├── Legend.jsx
-│ │ └── MagnitudeHistogram.jsx
-│ ├── App.jsx
-│ ├── main.jsx
-│ └── styles/
-│ ├── App.css
-│ └── component-specific css files
-├── public/
-├── package.json
-├── vite.config.js
-└── README.md
