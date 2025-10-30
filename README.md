@@ -28,3 +28,11 @@ This dashboard provides a visual summary of earthquake events based on magnitude
 | Icons | Lucide React |
 | Deployment | GitHub Pages / CodeSandbox / StackBlitz |
 
+
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Mouni-08/earthquake-dashboard.git
+cd earthquake-dashboard
